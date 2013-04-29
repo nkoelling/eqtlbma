@@ -3105,6 +3105,14 @@ loadGenosAndSnpInfoFromVcf (
     if (! sSnpsToKeep.empty() && sSnpsToKeep.find (tokens[2])
 	== sSnpsToKeep.end())
       continue;
+
+    //if the snp doesn't have an id make one by concatenating chr and position
+    //required for vcf files without ids 
+    if (tokens[2] == ".") {
+    	std::stringstream ss;
+    	ss << tokens[0] << '_' << tokens[1];
+    	tokens[2] = ss.str();
+    }
     
     maf = 0;
     if (mSnps.find(tokens[2]) == mSnps.end())
