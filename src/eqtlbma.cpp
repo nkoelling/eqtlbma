@@ -3110,7 +3110,7 @@ loadGenosAndSnpInfoFromVcf (
     //required for vcf files without ids 
     if (tokens[2] == ".") {
     	std::stringstream ss;
-    	ss << tokens[0] << '_' << tokens[1];
+    	ss << tokens[0] << ':' << tokens[1];
     	tokens[2] = ss.str();
     }
     
